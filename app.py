@@ -20,14 +20,6 @@ _graph = None
 def get_graph():
     global _graph
     if _graph is None:
-        if not OPENAI_API_KEY or not PINECONE_API_KEY:
-            raise HTTPException(
-                status_code=503,
-                detail=(
-                    "API Keys not configured. Please ensure OPENAI_API_KEY and "
-                    "PINECONE_API_KEY are defined in your .env file."
-                ),
-            )
         _graph = build_rag_graph(index_name=os.getenv("PINECONE_INDEX_NAME", "agentic-ai-index"))
     return _graph
 

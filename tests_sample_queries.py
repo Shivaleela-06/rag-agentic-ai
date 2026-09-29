@@ -135,16 +135,10 @@ def test_via_api(base_url: str):
 
 
 def test_via_graph():
-    """Run tests directly invoking the LangGraph workflow with Pinecone and OpenAI."""
+    """Run tests directly invoking the LangGraph workflow."""
     print(f"\n=======================================================")
     print(f" Running Test Suite via Direct LangGraph Invocation")
     print(f"=======================================================")
-
-    if not OPENAI_API_KEY or not PINECONE_API_KEY:
-        print("\n[Notice] OPENAI_API_KEY or PINECONE_API_KEY not configured in .env.")
-        print("To run offline validation without active keys, run:")
-        print("   python tests_sample_queries.py --mock\n")
-        return False
 
     graph = build_rag_graph()
     passed_count = 0
